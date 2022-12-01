@@ -22,11 +22,11 @@ public class Differ {
     }
 
     public static Map<String, String> differMap(Map<String, Object> map1, Map<String, Object> map2) {
-        Set <String> keys = new TreeSet<>();
+        Set<String> keys = new TreeSet<>();
         keys.addAll(map1.keySet());
         keys.addAll(map2.keySet());
 
-        Map <String, String> result = new TreeMap<>();
+        Map<String, String> result = new TreeMap<>();
         for (String key: keys) {
             if (!map1.containsKey(key)) {
                 result.put(key, "added");
