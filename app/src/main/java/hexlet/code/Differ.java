@@ -16,13 +16,16 @@ public class Differ {
         Map<String, Object> secondFileToMap = getData(filepath2);
 
         Map<String, String> differMap = differMap(firstFileToMap, secondFileToMap);
-        //System.out.println(differMap);
         return Stylish.format(differMap, firstFileToMap, secondFileToMap);
     }
 
     public static Map<String, Object> getData(String filepath) throws Exception {
         String stringFromFile = new String(Files.readAllBytes(Paths.get(filepath)));
-        return parse(stringFromFile);
+        return parse(stringFromFile, getFormatFile(filepath));
+    }
+
+    public static String getFormatFile(String file) {
+        return file.substring(file.lastIndexOf(".") + 1);
     }
 
     public static Map<String, String> differMap(Map<String, Object> map1, Map<String, Object> map2) {
