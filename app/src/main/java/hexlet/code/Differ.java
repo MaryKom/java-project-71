@@ -2,7 +2,11 @@ package hexlet.code;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.TreeMap;
+import java.util.Objects;
 
 import static hexlet.code.Parser.parse;
 

@@ -9,17 +9,19 @@ public class Stylish {
             String key = element.getKey();
             switch (element.getValue()) {
                 case "added":
-                    result += "  + " + key + ": " + map2.get(key) + ",\n";
+                    result += "  + " + key + ": " + map2.get(key) + "\n";
                     break;
                 case "deleted":
-                    result += "  - " + key + ": " + map1.get(key) + ",\n";
+                    result += "  - " + key + ": " + map1.get(key) + "\n";
                     break;
                 case "changed":
-                    result += "  - " + key + ": " + map1.get(key) + ",\n";
-                    result += "  + " + key + ": " + map2.get(key) + ",\n";
+                    result += "  - " + key + ": " + map1.get(key) + "\n";
+                    result += "  + " + key + ": " + map2.get(key) + "\n";
                     break;
                 case "unchanged":
-                    result += "    " + key + ": " + map2.get(key) + ",\n";
+                    result += "    " + key + ": " + map2.get(key) + "\n";
+                    break;
+                default:
                     break;
             }
         }
