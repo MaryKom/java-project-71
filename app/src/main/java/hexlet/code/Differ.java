@@ -11,12 +11,16 @@ import java.util.Objects;
 import static hexlet.code.Parser.parse;
 
 public class Differ {
-    public static String generate(String filepath1, String filepath2) throws Exception {
+    public static String generate(String filepath1, String filepath2, String format) throws Exception {
         Map<String, Object> firstFileToMap = getData(filepath1);
         Map<String, Object> secondFileToMap = getData(filepath2);
 
         Map<String, String> differMap = differMap(firstFileToMap, secondFileToMap);
         return Stylish.format(differMap, firstFileToMap, secondFileToMap);
+    }
+
+    public static String generate(String filepath1, String filepath2) throws Exception {
+        return generate(filepath1, filepath2, "stylish");
     }
 
     public static Map<String, Object> getData(String filepath) throws Exception {
