@@ -30,10 +30,10 @@ jobs:
           arguments: build
           build-root-directory: app
       - name: Publish code coverage
-        uses: paambaati/codeclimate-action@v2.5.0
+        uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-          JACOCO_SOURCE_PATH: ./app/src/main/java
+          JACOCO_SOURCE_PATH: ${{github.workspace}}/src/main/java
         with:
           coverageCommand: make report
           uses: cc-test-reporter after-build
