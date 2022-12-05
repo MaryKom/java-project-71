@@ -1,4 +1,4 @@
-package hexlet.code;
+package hexlet.code.formatters;
 import java.util.Map;
 
 public class Stylish {

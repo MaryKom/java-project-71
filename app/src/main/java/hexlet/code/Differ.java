@@ -16,7 +16,7 @@ public class Differ {
         Map<String, Object> secondFileToMap = getData(filepath2);
 
         Map<String, String> differMap = differMap(firstFileToMap, secondFileToMap);
-        return Stylish.format(differMap, firstFileToMap, secondFileToMap);
+        return Formatter.format(differMap, firstFileToMap, secondFileToMap, format);
     }
 
     public static String generate(String filepath1, String filepath2) throws Exception {

@@ -43,4 +43,22 @@ public class TestDiffer {
         String expected = Files.readString(Paths.get("src/test/resources/stylish_yml_2"));
         assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    public void generateTestJsonToPlain() throws Exception {
+        String filepath3Json = ("src/test/resources/file3.json");
+        String filepath4Json = ("src/test/resources/file4.json");
+        String actual = Differ.generate(filepath3Json, filepath4Json, "plain");
+        String expected = Files.readString(Paths.get("src/test/resources/plain"));
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void generateTestYmlToPlain() throws Exception {
+        String filepath3Yml = ("src/test/resources/file3.yml");
+        String filepath4Yml = ("src/test/resources/file4.yml");
+        String actual = Differ.generate(filepath3Yml, filepath4Yml, "plain");
+        String expected = Files.readString(Paths.get("src/test/resources/plain"));
+        assertThat(actual).isEqualTo(expected);
+    }
 }

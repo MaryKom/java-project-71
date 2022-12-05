@@ -15,12 +15,13 @@ public class App implements Callable {
     @Parameters(index = "1", description = "path to second file")
     private static String filepath2;
 
-    @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
+    @Option(names = {"-f", "--format"}, description = "output format \"stylish\" or \"plain\" "
+            + "or \"json\" [default: stylish]")
     private String format = "stylish";
 
     @Override
     public final String call() throws Exception {
-        System.out.println(Differ.generate(filepath1, filepath2));
+        System.out.println(Differ.generate(filepath1, filepath2, format));
         return "call's work!";
     }
     public static void main(String[] args) {
