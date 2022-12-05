@@ -61,4 +61,18 @@ public class TestDiffer {
         String expected = Files.readString(Paths.get("src/test/resources/plain"));
         assertThat(actual).isEqualTo(expected);
     }
+
+    public void generateTestJsonToJson() throws Exception {
+        String actual = Differ.generate(filepath1Json, filepath2Json, "json");
+        String expected = "{\"- follow\":false,\"  host\":\"hexlet.io\","
+                + "\"- proxy\":\"123.234.53.22\",\"- timeout\":50,\"+ timeout\":20,\"+ verbose\":true}\n";
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    public void generateTestYmlToJson() throws Exception {
+        String actual = Differ.generate(filepath1Yml, filepath2Yml, "json");
+        String expected = "{\"- follow\":false,\"  host\":\"hexlet.io\","
+                + "\"- proxy\":\"123.234.53.22\",\"- timeout\":50,\"+ timeout\":20,\"+ verbose\":true}\n";
+        assertThat(actual).isEqualTo(expected);
+    }
 }
