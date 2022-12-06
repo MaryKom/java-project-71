@@ -3,14 +3,14 @@ package hexlet.code;
 public class Node {
     private final String typeOfChange;
     private final String key;
-    private Object oldValue;
-    private Object newValue;
+    private final Object oldValue;
+    private final Object newValue;
 
-    public Node(String type, String thisKey, Object newValue, Object oldValue) {
+    public Node(String type, String thisKey, Object newV, Object oldV) {
         this.typeOfChange = type;
         this.key = thisKey;
-        this.oldValue = oldValue;
-        this.newValue = newValue;
+        this.oldValue = oldV;
+        this.newValue = newV;
     }
 
     public final String getTypeOfChange() {
