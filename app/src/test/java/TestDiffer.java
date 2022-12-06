@@ -76,6 +76,7 @@ public class TestDiffer {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Test
     public void generateTestStylishJson() throws Exception {
         String actual = Differ.generate(filepath1Json, filepath2Json, "stylish");
         String expected = Files.readString(Paths.get("src/test/resources/stylish_json.json"));
