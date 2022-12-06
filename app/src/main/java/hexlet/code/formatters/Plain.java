@@ -27,7 +27,7 @@ public class Plain {
                     break;
             }
         }
-        return result;
+        return result.trim();
     }
 
     private static String getValue(Object value) {
