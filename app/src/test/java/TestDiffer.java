@@ -62,17 +62,30 @@ public class TestDiffer {
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Test
     public void generateTestJsonToJson() throws Exception {
         String actual = Differ.generate(filepath1Json, filepath2Json, "json");
-        String expected = "{\"- follow\":false,\"  host\":\"hexlet.io\","
-                + "\"- proxy\":\"123.234.53.22\",\"- timeout\":50,\"+ timeout\":20,\"+ verbose\":true}\n";
+        String expected = Files.readString(Paths.get("src/test/resources/json"));
         assertThat(actual).isEqualTo(expected);
     }
 
+    @Test
     public void generateTestYmlToJson() throws Exception {
         String actual = Differ.generate(filepath1Yml, filepath2Yml, "json");
-        String expected = "{\"- follow\":false,\"  host\":\"hexlet.io\","
-                + "\"- proxy\":\"123.234.53.22\",\"- timeout\":50,\"+ timeout\":20,\"+ verbose\":true}\n";
+        String expected = Files.readString(Paths.get("src/test/resources/json"));
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    public void generateTestStylishJson() throws Exception {
+        String actual = Differ.generate(filepath1Json, filepath2Json, "stylish");
+        String expected = Files.readString(Paths.get("src/test/resources/stylish_json.json"));
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void generateTestStylishYml() throws Exception {
+        String actual = Differ.generate(filepath1Yml, filepath2Yml, "stylish");
+        String expected = Files.readString(Paths.get("src/test/resources/stylish_yml"));
         assertThat(actual).isEqualTo(expected);
     }
 }

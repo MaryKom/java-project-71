@@ -2,10 +2,11 @@ package hexlet.code;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.TreeMap;
+import java.util.ArrayList;
 import java.util.Objects;
 
 import static hexlet.code.Parser.parse;
@@ -15,8 +16,8 @@ public class Differ {
         Map<String, Object> firstFileToMap = getData(filepath1);
         Map<String, Object> secondFileToMap = getData(filepath2);
 
-        Map<String, String> differMap = differMap(firstFileToMap, secondFileToMap);
-        return Formatter.format(differMap, firstFileToMap, secondFileToMap, format);
+        List<Node> differMap = differMap(firstFileToMap, secondFileToMap);
+        return Formatter.format(differMap, format);
     }
 
     public static String generate(String filepath1, String filepath2) throws Exception {
@@ -32,23 +33,22 @@ public class Differ {
         return file.substring(file.lastIndexOf(".") + 1);
     }
 
-    public static Map<String, String> differMap(Map<String, Object> map1, Map<String, Object> map2) {
+    public static List<Node> differMap(Map<String, Object> map1, Map<String, Object> map2) {
         Set<String> keys = new TreeSet<>();
         keys.addAll(map1.keySet());
         keys.addAll(map2.keySet());
-
-        Map<String, String> result = new TreeMap<>();
+        List<Node> allDifferences = new ArrayList<>();
         for (String key: keys) {
             if (!map1.containsKey(key)) {
-                result.put(key, "added");
+                allDifferences.add(new Node("added", key, map2.get(key), map1.get(key)));
             } else if (!map2.containsKey(key)) {
-                result.put(key, "deleted");
+                allDifferences.add(new Node("deleted", key, map2.get(key), map1.get(key)));
             } else if (!Objects.equals(map1.get(key), map2.get(key))) {
-                result.put(key, "changed");
+                allDifferences.add(new Node("changed", key, map2.get(key), map1.get(key)));
             } else {
-                result.put(key, "unchanged");
+                allDifferences.add(new Node("unchanged", key, map2.get(key), map1.get(key)));
             }
         }
-        return result;
+        return allDifferences;
     }
 }

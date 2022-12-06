@@ -1,22 +1,27 @@
 package hexlet.code.formatters;
 
-import java.util.Map;
+import hexlet.code.Node;
+
+import java.util.List;
 
 public class Plain {
-    public static String format(Map<String, String> differMap, Map<String, Object> map1, Map<String, Object> map2) {
+    public static String format(List<Node> differTree) {
         String result = "";
-        for (Map.Entry<String, String> element : differMap.entrySet()) {
+        for (Node element : differTree) {
             String key = element.getKey();
-            switch (element.getValue()) {
+            String typeOfChange = element.getTypeOfChange();
+            Object oldValue = element.getOldValue();
+            Object newValue = element.getNewValue();
+            switch (typeOfChange) {
                 case "added":
-                    result += "Property '" + key + "' was added with value: " + getValue(map2.get(key)) + "\n";
+                    result += "Property '" + key + "' was added with value: " + getValue(newValue) + "\n";
                     break;
                 case "deleted":
                     result += "Property '" + key + "' was removed\n";
                     break;
                 case "changed":
-                    result += "Property '" + key + "' was updated. From " + getValue(map1.get(key))
-                            + " to " + getValue(map2.get(key)) + "\n";
+                    result += "Property '" + key + "' was updated. From " + getValue(oldValue)
+                            + " to " + getValue(newValue) + "\n";
                     break;
                 default:
                     break;
