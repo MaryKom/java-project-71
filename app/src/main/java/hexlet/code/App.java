@@ -20,9 +20,9 @@ public class App implements Callable {
     private String format = "stylish";
 
     @Override
-    public final String call() throws Exception {
+    public final Integer call() throws Exception {
         System.out.println(Differ.generate(filepath1, filepath2, format));
-        return "call's work!";
+        return 0;
     }
     public static void main(String[] args) {
         int exitCode = new CommandLine(new App()).execute(args);
