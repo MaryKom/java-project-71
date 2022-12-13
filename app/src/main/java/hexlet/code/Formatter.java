@@ -13,8 +13,10 @@ public class Formatter {
                 return Plain.format(differTree);
             case "json":
                 return Json.format(differTree);
-            default:
+            case "stylish":
                 return Stylish.format(differTree);
+            default:
+                throw new Exception("Formatting error");
         }
     }
 }
