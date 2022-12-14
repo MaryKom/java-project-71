@@ -16,7 +16,9 @@ public class Formatter {
             case "stylish":
                 return Stylish.format(differTree);
             default:
-                throw new Exception("Formatting error");
+                var message = String.format("Unknown format name: %s. Can be 'stylish', 'plain' or 'json'",
+                        format);
+                throw new Exception(message);
         }
     }
 }
